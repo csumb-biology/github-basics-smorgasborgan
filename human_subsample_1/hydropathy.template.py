@@ -33,14 +33,14 @@ InSeqFile.close()
 
 OutFileName = InSeqFileName.strip('.fasta') + ".output.csv"
 OutFile = open(OutFileName,"w")
-HpValues = []
+
 for i in range(len(ProtSeq)):
     Value+=Hydropathy[ProtSeq[i]]
     if(i>(window-1) and i<=(len(ProtSeq)-window)):
         Value=Value-Hydropathy[ProtSeq[i-window]]
         OutString = "%d,%.2f" % (window_counter, Value)
         OutFile.write(OutString + "\n")
-		HpValues.append(Value)
+
     window_counter+=1
 
 OutFile.close()
